@@ -1,6 +1,7 @@
 # Python Chases Monkey
 ### An Introduction to Python Programming
 #### By Jason M. Pittman
+
 <hr>
 
 Welcome to `Python Chases Monkey`, an open source textbook I created for my CSC1705 Python Programming course at [High Point University](www.highpoint.edu).
