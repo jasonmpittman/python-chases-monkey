@@ -42,13 +42,17 @@ We can put this **function** anywhere in a program and then call it using a stat
 
 First, we have the `def` keyword. As a keyword, `def` communicates our intention to declare or *define* a function to (a) those people reading the code as well as (b) to the `Python` interpreter.  
 
-We also learn a new operation here, `+=`. We read this as, *increase the value of the left variable by the value on the right*. 
+We also learned how to pass **parameters** to a function. Parameters are values we want to use *within* the function but originate from outside of the function. We have to provide these when we *call* or use the function. So, given **Example 1**, we might call the function like `slither(1, 1)`.
 
-#### Modifiers
+Next, we have somewhat of a two-for-one: the entirey of line 1 is a **signature** and we have the function name.
 
+Lastly, we experienced a new operator here, `+=`. We read this as, *increase the value of the left variable by the value on the right*. 
 
 #### Pure
+Sometimes develop functions that do not modify the values passed through parameters, does not produce an effect such as using `print()` to display output. Such a function can be called **pure**.
 
+#### Modifiers
+More commonly, we develop functions that modify values passed as parameters. These are referred to as **modifiers** or *modifying functions*. 
 
 ### Methods
 Let's look at an example before we dive into technical details. In comparing **Example 1** above and **Example 2** below, what would can we assert as differences?
