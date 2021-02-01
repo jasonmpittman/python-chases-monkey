@@ -11,7 +11,6 @@ rights: © 2021 Jason M. Pittman, CC BY-SA 4.0
 ## Python Wakes Up
 
 ## Introduction
-[done]()
 Okay, maybe creating pythons and monkeys wasn't the most exciting programming experience you can imagine. That's because the python and monkey didn't do anything. They simply existed. I reckon a philospher would find existence worthy of course-level inquirty but we programmers need action, we need movement. Well, we ought to be interested in existence too but just not in the same context as philosphy.
 
 Anyway, in view of the last chapter largely centering around nouns, it is a natural segue to take a deep descent into verbs now. With this, we get the action we crave and we get our python and monkey to do something. If we want to refresh or more adequately prepare, there is the overview call-ahead in the **methods** section of chapter 2. 
@@ -44,15 +43,20 @@ First, we have the `def` keyword. As a keyword, `def` communicates our intention
 
 We also learned how to pass **parameters** to a function. Parameters are values we want to use *within* the function but originate from outside of the function. We have to provide these when we *call* or use the function. So, given **Example 1**, we might call the function like `slither(1, 1)`.
 
-Next, we have somewhat of a two-for-one: the entirey of line 1 is a **signature** and we have the function name.
+Next, we have somewhat of a two-for-one: we have the function **name** and the entirey of line one is a **signature**. The name is close to arbitrary. In earlier versions of Python, we were stuck with letters and numbers with underscores. However, in modern Python we can use just about any legal character. The construct elements on the right of the name add detail, kind of like an operational suffix. The two are so intertwined we always define functions using parentheses and we always call functions likewise.
 
-Lastly, we experienced a new operator here, `+=`. We read this as, *increase the value of the left variable by the value on the right*. 
+Lastly, we experienced a new operator here, `+=`. We read this as, *increase the value of the left variable by the value on the right*. Python has the standard **operators** we would expect a programming language to possess. Rather than memorize a list, I think we'd better served by just using them. Worse case, we can find them by asking simple but precise questions such as *how do I add to integers in Python* and we'll find `x = 1; y = 1; x + y = 2`. 
+
+Those five constructs collectively define a **function**. Technically, the same is true for a **method** but we'll get to that in a little bit. In the meantime, there are two types of functions we should know since the difference is largely based on implementation, not discrete elements.
 
 #### Pure
-Sometimes develop functions that do not modify the values passed through parameters, does not produce an effect such as using `print()` to display output. Such a function can be called **pure**.
+Sometimes develop functions that do not modify the values passed through parameters, does not produce an effect. If we pass the same parameter twice, the function does the same thing twice. Exercise caution here as these functions can have a `return` statement. Think of a **function** as such `strlen()`. Such a function can be called **pure**. 
 
 #### Modifiers
-More commonly, we develop functions that modify values passed as parameters. These are referred to as **modifiers** or *modifying functions*. 
+More commonly, we develop functions that modify values passed as parameters. These are referred to as **modifiers** or *modifying functions*. As a clear difference compared to **pure** functions, think of something like `time(today)`. Normally, the dead giveaway that we need a **modifier** function is when we want to modify an object which is passed as a parameter but the calling code maintains a reference so changes inside the function are manifested outside as well.
+
+#### Waking the python
+Certainly, we could wake our python using **functions**. However, we'd be stuck either in a simple procedural programming context or, at best, forcing object-oriented program constructs into procedural framework. Neither is desirable if you want to get to a place where a python is awake and maybe chasing a monkey. For that, we need **methods**. Fortunately, everything we've learned so far carries forward.  
 
 ### Methods
 Let's look at an example before we dive into technical details. In comparing **Example 1** above and **Example 2** below, what would can we assert as differences?
@@ -87,12 +91,10 @@ I should point out: I argue that leveraging object-oriented design principles le
 ### Self
 Before we start discussing the `self` keyword, take a guess at what you think `self` refers to in our code? There's a hint in the phrasing of the question...
 
-Okay, did you surmise that `self` is a reference to the object encapsulating the method?  
-
-The use of `self` is a big clue that we're dealing with object-orientation because only methods will use it. Well, technically **properties** do reference `self` as well but we'll talk about them later.
+Okay, did you surmise that `self` is a reference to the object encapsulating the method? Indeed, the use of `self` is a big clue that we're dealing with object-orientation because only methods will use it. Well, technically **properties** do reference `self` as well but we'll talk about them later.
 
 ### Init and Constructors
-Back to methods proper now; we can talk about a special kind of method called a **constructor**. Take a look at **Example 4** which we first say in the last chapter. 
+Back to methods proper now; we can talk about a special kind of method called a **constructor**. Take a look at **Example 4** which we first say in the last chapter. More specifically, look at line four.
 
 #### Example 4
 ```
@@ -106,17 +108,68 @@ Back to methods proper now; we can talk about a special kind of method called a 
 (8)         print("I am a sssneaky ssssnake")
 ```
 
+The `__init__` name is a special internal **method** used by Python. Python uses the **method**, calls `__init__` when we *construct* the object of a class containing it. Normally we don't execute logic within the **constructor** but we absolutely use the method to initialize **properties**. 
+
+Given that, realize we only need a **constructor** if we have something to initialize. Check this out:
+
+#### Example 5
+```
+(1) class Python:
+(2)                      
+(3)     def wake(self):
+(4)         print("I am awake...")
+```
+
+Pretty simple, no? Well, as we increase our design complexity we might find ourselves wanting to selectively wake up the python.
+
 ### Overloads
 If I'm being honest, the way Python handles method **overloading** is strange if you're coming from another language such as `C++` or `C#`. At the same time, if you haven't worked with **overloading** before, this is still going to be strange but for different reasons. Let's try to dispell enough of the strangeness so we can leverage this programming technique.
 
-As a first principle, Python does not allow two **function** or **methods** to have the same name. Conversely, `C++` allows us to use the same name as long as the signature is different.
+As a first principle, Python does not allow two **function** or **methods** to have the same name. In the cases when we can bypass this, the *last* one is what gets called. Conversely, `C++` allows us to use the same name as long as the signature is different. Remember function and method signatures from the beginning of the chapter, right?
+
+#### Example 6
+```
+(1) class Python:
+(2)                      
+(3)     def wake(self, state=None):
+(4)         if state is not None:
+(5)              print("I'm still sleeping")
+(6)         else:
+(7)              print("I am awake...")
+```
+
+Now, when we call the `Phil.wake()` method we can pass a parameter to conditionally wake `Phil` up. 
 
 ### Polymorphism
-Polymorphism is the last of the core object-oriented design tenets for us to examine.  
+Polymorphism is the last of the core object-oriented design tenets for us to examine. The idea is closely related to the **overload** concept because we focus our object design on using single constructs in multiple ways. This works primarily at **class** level but manifests specifically at **method** level. **Example 5** reveals how we can implement this principle.
+
+#### Example 5
+```
+(1) class Animal:
+(2)     
+(3)     def setName(self, name):
+(4)         self.name = name
+(5)     
+(6)     def getName(self):
+(7)         return self.name
+(8) 
+(9) class Python(Animal):
+(10)       
+(11)     def setName(self):
+(12)        name = "Phil"
+(13)     
+(14)     def getName(self):
+(15)        return self.name
+```
 
 ## Exercises
+1. Implement a functioning version of **Example 5**. What value does `getName()` return when called from the `Python()` class?
+
+2. Take the program from **Exercise 1** and implement a **constructor** in the `Python()` class that initializes `name` to `Phi` instead of waiting for the `setName()` method call.
 
 ## Questions
 1. What type of function is represented in **Example 1**?
    
 2. What object-oriented design principle(s) are enforced as a conseuquence by calling methods indirectly through an object?
+
+3. How do you think polymorphism is useful for how we might implement our python and monkey world?
