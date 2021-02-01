@@ -26,7 +26,7 @@ Cheers - Jason
 1. [Preface](preface/preface.md)
 2. [Chapter 1](chapter-01/getting-started.md)
 3. [Chapter 2](chapter-02/python-and-monkey.md)
-4. [Chapter 3]()
+4. [Chapter 3](chapter-03/python-wakes-up.md)
 5. [Chapter 4]()
 6. [Chapter 5]()
 7. [Chapter 6]()
