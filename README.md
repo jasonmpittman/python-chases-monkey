@@ -27,7 +27,7 @@ Cheers - Jason
 2. [Chapter 1](chapter-01/getting-started.md)
 3. [Chapter 2](chapter-02/python-and-monkey.md)
 4. [Chapter 3](chapter-03/python-wakes-up.md)
-5. [Chapter 4]()
+5. [Chapter 4](chapter-04/python-counts-scales.md)
 6. [Chapter 5]()
 7. [Chapter 6]()
 8. [Chapter 7]()
