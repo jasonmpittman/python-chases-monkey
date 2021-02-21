@@ -11,7 +11,6 @@ rights: © 2021 Jason M. Pittman, CC BY-SA 4.0
 ## Python Sees Monkey
 
 ## Introduction
-[done]()
 A python cannot chase a monkey if the python does not see it. This might be the most Zen thing I've written so far, maybe ever. Despite the philosophical trappings in such a statement, the fact remains true. Thus, even in the language used to express the idea, we find the basis of *conditional* evaluation. Thus, if we were to render the chapter title as a complete sentence, we might come close to, *if a python sees a monkey, the python chases the monkey*. Yes, that reads as exactly what I meant.
 
 Accordingly, the *if* becomes operational important and forms the main thrust this chapter. We will study *if* as the basis for **conditionals** along with a host of associated supporting keywords and operators. While the supporting keywords and operators may seem inconsequential, we'll soon discover just how much power rests in their subtlety. Futhermore, I suggest we'd be doing our python and monkey a great disservice if we explored conditionals without also considering how to repeatedly evaluate the condition. Doing so involves **iteration** or what many call **loops**.
@@ -19,13 +18,11 @@ Accordingly, the *if* becomes operational important and forms the main thrust th
 With that, let's rejoin the python as it finishes counting its scales. The tree canopy is now still. Suddenly, the sound of dead leaves and dry twigs snapping resounds through the jungle. The monkey freezes. If the python sees it, the chase will begin...
 
 ## Learning Objectives
-[done]()
 1. Interpret and evaluate logical expressions
 2. Construct conditional statements to affect program flow
 3. Process logic iteratively with repetition controls
 
 ### Conditionals
-[done]()
 Despite what we might think, programming is much more than simple, step-by-step processing of statements. The reason for this is that not many problems can be solved through mere procedural execution. Instead, we often need to check something and, based on the result, take a different logic path. This is where **conditional** evaluation comes in for us.
 
 Let's say that a **conditional** is a form of decision structure. The decision is one we, the programmer, makes *before* committing code to file. We do so by designing statements using *relational* operators such as `>`, `<`, `==`, and `!=`. These allow us to pose a question and receive a propositional evaluation of **true** or **false**. 
@@ -102,7 +99,6 @@ Of course, the idea lacking is the aspect of repetition. After all, we don't fre
 
 
 ### Iteration (Loops)
-[done]()
 What many people refer to as a **loop** in programming, we are going to refer to as **iteration**. The reason for this seemingly innocuous distinction is so we can explore the concept of **iteration** separately from the implementation of the concept which relies on keywords related to the mechanics of a programming **looping**. Put simply, *iteration* is an idea of how a program iterates over some code statement(s) whereas *looping* is the implementation of the idea manifest in keywords.
 
 More particularly, we can state Python has two types of **iteration**: definite and indefinite. While both represent a means to repeat code statements (i.e., blocks of *logic*), the amount of repetition is precisely what the definiteness refers to in this context. Therein, **definite iteration** indicates a predefined amount of repetition. In contrast, **indefinite iteration** requires a conditional as the terminal factor.
@@ -156,6 +152,8 @@ As long as `name` doesn't hold the value `Phil`, the iteration will continue. In
 
 ## Excercises
 1. Implement a `Monkey` class which includes a property that allows us to implement the code in **Example 2** within a method called `Shines`.
+
+2. In the `Monkey` class from **Exercise 1**, implement a **definite iterator** in a class method `Greeting` such that the monkey greets us by output each item in the list, `["Hi", "my", "name", "is", "Murry"]`.
 
 ## Questions
 1. Is the **conditional** `value is True` is equivalent to `value is not False`?
