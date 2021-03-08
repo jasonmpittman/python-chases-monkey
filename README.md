@@ -29,7 +29,7 @@ Cheers - Jason
 4. [Chapter 3](chapter-03/python-wakes-up.md)
 5. [Chapter 4](chapter-04/python-counts-scales.md)
 6. [Chapter 5](chapter-05/python-sees-monkey.md)
-7. [Chapter 6]()
+7. [Chapter 6](chapter-06/python-looks-inside.md)
 8. [Chapter 7]()
 9. [Chapter 8]()
 10. [Appendix](appendix/python-gits-good.md)
