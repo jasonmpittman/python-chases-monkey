@@ -25,7 +25,7 @@ With that, let's step back and take in the entire scene. The tree canopy is full
 3. Log internal program information to external endpoints
 
 ### Exception Handling
-[](https://realpython.com/python-exceptions/)
+[done]()
 A brief definition is in order before we start exploring **exceptions** in detail. **Exceptions** are error conditions that arise during runtime in otherwise *correct* code. We can const
 
 Broadly speaking, **exceptions** can be separated into two forms: built-in and user-defined. Both operate identically albeit one is implicit (built-in) and the other must be explicitly called (user-defined). Further, the important takeaway now is that we must comes to grips with how to handle both forms of exceptions.
@@ -67,19 +67,50 @@ This example shows how we can stack the handling of exceptions so that we can re
 Lastly, if we are interested in producing robust code, and we should be, then wrapping our code in `try-except` blocks is one of the strongest habits to develop. This applies to built-in functionality as well as the functionality we implement in our own types. 
 
 #### User-defined
-It stands to reason that since we are designing our own **types** (e.g. `Snake`, `Animal`, `Monkey` and so forth), we can also define our own **exceptions**.
+It stands to reason that since we are designing our own **types** (e.g. `Snake`, `Animal`, `Monkey` and so forth), we can also define our own **exceptions**. This makes further sense when we realize the implicit operation in the built-in form of an **exception** includes a `raise` call. More technically, we use `raise` to *throw an exception*. Consider the following:
 
-The implicit operation in the built-in form of an **exception** includes a `raise` call. 
+#### Example 3
+```
+(1) def Count(snake):
+(2)     if snake.scales > 9000:
+(3)         raise Exception("A snake cannot have over 9000 scales...")
+```
+
+Here we use `raise` to throw a custom exception when the number of scales a given snake has exceeds a specified value. What we see in **Example 3** is a rough prototype of the type of processing that occurs within a built-in **exception** such as `ZeroDivision`. This means we still have to wrap the `Count()` call in a `try-except` block elsewhere to hanlde whatever exception we define. Speaking of which, we're not limited to general `Exception` either. We can use any built-in exception such as `TypeError` or `NameError`. The type of exception is less important right now than the habit of coding with the idea of validating results and throwing the exception using `raise`. 
+
+Of course, an **exception** tells us when there is a problem during runtime. What if we just want to know how well our program is running?
 
 ### Efficiency
-The notion of efficiency is not explored often in an introductory programming course. To be fair, I hadn't thought about effiency until a university colleague mentioned it during a lunch discussion.
+The notion of efficiency is not explored often in an introductory programming course. Yet, I suggest knowing just how well or how *optimally* are code executes is critical to understanding programming. Efficiency is also how we might differentiate between two seemingly equivalent solutions.
 
-Efficiency is measurable. I would go so far as to say that efficiency is *easily* measurable. Wait, I think we should go one step further and agree that all code should include an efficiency measuring harness as part of its debugging structures.
+Efficiency is measurable. I would go so far as to say that efficiency is *easily* measurable. Wait, I think we should go one step further and agree that all code should include an efficiency measuring harness as part of its debugging structures. Hold up, actually, this is a great time to introduce the formal idea of **unit testing** which is something we informally practice as we iteratively run our programs as we add statements to see if any exceptions are introduced.
+
+#### Unit testing
+[](https://www.datacamp.com/community/tutorials/unit-testing-python)
 
 ### Debugging (https://codeburst.io/how-i-use-python-debugger-to-fix-code-279f11f75866)
-Speaking of debugging, I would rank general debugging skills as more desirable than advanced programming knowledge. There is a straightforward rationale and that is if you can debug, you'll be able to fix bugs in someone else's code as well as your own. If you cannot debug effectively, you will struggle to troubleshoot just your own code.
+Speaking of debugging, I would rank general debugging skills as more desirable than advanced programming knowledge. There is a straightforward rationale for my assertion: if you can debug, you'll be able to fix bugs in someone else's code as well as your own. If you cannot debug effectively, you will struggle to troubleshoot just your own code. Simple.
+
+Also *simple* is the first thing we can do when we run our program and encounter an unhandled exception. We run again but wit the `-i` parameter as in `python3 -i myprogram.py`. This will automatically load an interactive python interpreter session when the error occurs. Once in the interactive session, we can check what values are set in fields, what objects are instantiated, and so forth. The shortcoming though is that we cannot interact with the program as it is running. To do that, we need a true debugging option.
+
+To start, there are three options we have available to run our code in *debugging* mode. First, if we have run with `-i` we can manually load the Python debugger, `pdb` in the resulting interactive interpreter session. This is done by importing the pdb module as `import pdb` and then running `pdb.pm()`. The `.pm()` method is a *post-mortem* or after-the-fact inspection. We'll leave *what* we can do within the `pdb` shell momentarily.
+
+
+Next, we can also change the way we run our python program in a slightly different manner. Whereas up to this point we simply ran `python3 myprogram.py` or in an equivalent manner, now we need to add `-m pdb` to the command. Using the same idea, for debugging we'd run `python3 -m pdb myprogram.py`. 
+
+#### Example 4
+```
+
+```
+
+Running **Example 4** using `python3 -m pdb` will load an interactive debugging shell.  
+
+If we are going to get good with debugging, we also need to know how to set breakpoints in our code. For our convenience, Python has a `breakpoint()` function.
+
 
 #### Print
+I would not be doing a good job of showing how most of us carry out our Python programming if I didn't talk about (ab)using the `print()` function.
+
 Use the `print()` function has to be the most common form of debugging. 
 
 Leveraging `print()` has the advantages of not requiring specialized knowledge and being easy to implement.
@@ -88,21 +119,15 @@ In contrast, `print()` has the disadvantages of being reactive and working at a 
 
 The best metaphor I can summon is that using `print()` as a debugger is like hearing someone talk on the phone. You passively hear one side of the conversation and then only in an after-the-fact manner.
 
-#### PDB
-
-
-The real power and beauty of using a debugger comes from being able to proactively interact with our code. 
-
-Continuing the phone metaphor; using PDB let's us join the call from the beginning. We can actively participate and steer the conversation.
 
 ### Logging
-The motivation for logging is, in my view, the same for having a window; you want to be able to see. However, in the case of programming, the *seeing* occurs in the reverse direction. We want, we need to be able to see into the program. More specifically, we want to see the state of the program; the values, program flow, and results of computational processing.
+The motivation for logging is, in my view, the same for having a window; you want to be able to see. However, in the case of programming, the *seeing* occurs in the reverse direction. We want, we need to be able to see into the program. More specifically, we want to see the state of the program; the values, program flow, and results of computational processing. Further, we want to do so even when there are no exceptions, no errors. Yes, exactly- logging is not just for problems but also for tracking the behavior of our programs even when it behaves well.
 
-I don't want to get too far into a technical implementation because we deal with file input and output in a later chapter. For now, let's stick with the concept of logging and dig into *how* to log and leave *where* for a later discussion.
+I don't want to get too far into a technical implementation because we deal with files in a later chapter. For now, let's stick with the concept of logging and dig into *why* and *how* to log while leaving *where* for a later discussion. Doing so will serve as a stronger bridge between our debugging and file I/O conversations.
 
-We have two options when it comes to implementing logging. First, we can design our own logging mechanism. This can be as simple as writing to a file instead of using `print()`. Second, we can use the `logging` module included in the base Python language architecture.
+We have two implementation techniques when it comes to implementing logging. First, we can design our own logging mechanism. This can be as simple as writing to a file instead of using `print()`. Second, we can use the `logging` module included in the base Python language architecture. The difference is material and certainly the labor involved is even more different. However, no one can reasonably tell you one way is better than the other. There is a rule of thumb though.
 
-My advice: use the native `logging` module. Using an existing wheel is almost always better than reinventing it. Logging is definitely a wheel that is not worth redoing on our own unless we have a very specific reason to do so.
+My advice: use the native `logging` module unless you have a specific reason not to. Using an existing wheel is almost always better than reinventing it. Logging is definitely a wheel that is not worth redoing on our own unless we have a very specific reason to do so.
 
 Something to know about the default `logging` module is that we can specify different levels of logging. Here, we can connect the concept of logging to the practice of debugging and create a bridge of sorts between the reactive `print()` method and the active `pdb` technique. 
 
@@ -110,7 +135,13 @@ Something to know about the default `logging` module is that we can specify diff
 ## Exercises
 1. Modify **Example 1** so that the function executes a valid division operation in the `except` block.
 
+2. Incorporate a `try-except` block in the `length` setter class method you designed based on **Example 5** in chapter 2.
+
+3. Add a `raise` to the `Animal` class constructor such that if a `str` type is not provided as `name` we throw an `Exception`.
+
 ## Questions
 1. What is the difference, if any, between an **exception** and a **syntax error**?
 
 2. Why do we position more specific `except` blocks before general blocks?
+
+3. 
