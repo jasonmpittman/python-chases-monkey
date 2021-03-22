@@ -9,10 +9,8 @@ rights: © 2021 Jason M. Pittman, CC BY-SA 4.0
 
 # Chapter 7
 ## Python Makes a Plan
-[Lists, Arrays, Dictionaries, and Tuples]()
 
 ## Introduction
-[done]()
 Can you feel it? The sophistication of our programs is increasing and with it our kung fu repotoire is growing. Likewise, our ability to use what we have learned is getting faster. However, we need to figure out how to manage and organize data so that we can store and retrieve that data without undue complications. Enter, **data structures**.
 
 You see, we need data structures to store and organize data effectively and efficiently. It is true that data structures are complex relative to simple variables. The complexity stems from handling multiple values, mutability, and data relationships. At the same time, data structures are more suitable than simple variables when we need to handle more than a single value at the same time.
@@ -20,19 +18,16 @@ You see, we need data structures to store and organize data effectively and effi
 Phil the python can feel it. Likewise, Marvin the monkey feels it. The time for the chase draws near. As the trees and their leaves fall silent. The time for organizing and planning is afoot.
 
 ## Learning Objectives
-[done]()
 1. Describe commonly used data structure types
 2. Articulate performance considerations between various data structure types
 3. Develop and implement common data structures using robust and testable code
 
 ### Data structures
-[done]()
 Python natively recognizes six data structure types along with a variety of subtypes and implementation variations. For example, the **List** data structure is the most common type. However, a **list** can be implemented as several *queue* types. We are going to focus on three data structure types: *lists*, *tuples*, *dictionaries*. Technically, we could include *sets* in this chapter too but I don't think the differences warrant the extra material. 
 
 By way of overview, it is easier to think of all data structures as *collections*. What a specific type of value a given collection can hold is one means of differentiating between data structures. Another way to differentiate between data structures is whether we can change values. That is, some of the data structures are mutable, meaning elements cannot be altered after initialization. Others (read: most) are mutable, thus values in the collection can be added, altered, or removed any time. We'll deal with which is which as we explore each data structure type.
 
 ### Arrays 
-[done]()
 If a **variable** is container for a single value as in `name = "Phil"` then an array is a special kind of variable or collection we can use to hold more than one value.
 
 While not a built-in data structure type, we can use the traditional **Array** by using `import array` module or through an external provider such as *Numpy*. 
@@ -44,10 +39,10 @@ Now, with that said, the real reason for mentioning **arrays** as a *collection*
 Let's check out a specific and simple case.
 
 #### Strings
-[done]()
 A quick aside and word on *strings*. Remember when we defined a **str** type as belonging the category of data types called *Text*? Well, the `str` is also a type of generic **Array**. If we consider that Python is built on a `C` foundation, and we know that `C` can do an array of characters (e.g., letters) but not a **string**, this will make way more sense.
 
 Consider the following when we have the assignment statement `name = "Phil"`:
+
 #### Example 1
 ```
 (1) print(name[0])
@@ -58,7 +53,6 @@ You guessed it, line one will output `P`. The reason we get the single character
 Pretty cool, right? All right, we can do even cooler things using the next data structure type.
 
 ### Lists
-[done]()
 What most people think of when they are implementing a collection (or more specifically, an **Array**) in Python is actually the **List** data structure type. In brief, a **List** is a data structure capable of holding *arbitrary* elements. The arbitrariness applies to both the length of the collection as well as the types of values held in the collection.
 
 #### Example 2
