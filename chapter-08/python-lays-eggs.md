@@ -7,7 +7,7 @@ documentclass: scrartcl
 rights: © 2021 Jason M. Pittman, CC BY-SA 4.0
 ---
 
-# Chapter 7
+# Chapter 8
 ## Python Lays Eggs
 
 ## Introduction
